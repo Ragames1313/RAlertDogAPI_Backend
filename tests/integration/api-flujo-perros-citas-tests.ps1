@@ -73,10 +73,12 @@ if (-not $createdUserId) {
     exit 1
 }
 
+#Añadido tipo
 # 5) Crear perro asociado al usuario.
 $perroBody = @{
     nombre = 'RayoFlow'
     raza = 'Pastor'
+    tipo = 0
     genero = 1
     fecha_de_nacimiento = '2021-06-10'
     id_usuario = $createdUserId
