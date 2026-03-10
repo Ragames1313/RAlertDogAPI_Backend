@@ -76,6 +76,17 @@ const getPerroPorRaza = async (raza) => {
     }
 };
 
+// Función para obtener un perro por su Tipo
+const getPerroPorTipo = async (Tipo) => {
+    try {
+        const perro = await db('perro').where({ Tipo }).first();
+        return perro;
+    } catch (error) {
+        console.error('Error al obtener perro por tipo:', error);
+        throw error;
+    }
+};
+
 // Función para modificar un perro
 const modifyPerro = async (id, perro) => {
     try {
@@ -122,6 +133,7 @@ module.exports = {
     addPerro,
     getPerrosPorUsuario,
     getPerroPorRaza,
+    getPerroPorTipo,
     modifyPerro,
     removePerro,
     tieneCitaProxima

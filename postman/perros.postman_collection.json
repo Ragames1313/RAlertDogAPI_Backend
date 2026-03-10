@@ -80,7 +80,7 @@
                                                 ],
                                      "body":  {
                                                   "mode":  "raw",
-                                                  "raw":  "{\n  \"nombre\": \"Bobby\",\n  \"raza\": \"Labrador\",\n  \"genero\": true,\n  \"fecha_de_nacimiento\": \"2022-05-01\",\n  \"id_usuario\": 1\n}"
+                                                  "raw":  "{\n  \"nombre\": \"Bobby\",\n  \"raza\": \"Labrador\",\n \"tipo\" : false,\n \"genero\": true,\n  \"fecha_de_nacimiento\": \"2022-05-01\",\n  \"id_usuario\": 1\n}"
                                               },
                                      "url":  {
                                                  "raw":  "{{baseUrl}}/perros",
