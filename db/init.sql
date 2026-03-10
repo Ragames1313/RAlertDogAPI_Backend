@@ -15,8 +15,8 @@ CREATE TABLE perro (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     raza VARCHAR(50) NOT NULL,
-    genero BOOLEAN DEFAULT FALSE,
     tipo BOOLEAN DEFAULT FALSE,
+    genero BOOLEAN DEFAULT FALSE,
     fecha_de_nacimiento DATE,
     id_usuario INT UNSIGNED,
     FOREIGN KEY (id_usuario) REFERENCES usuario(id) ON DELETE CASCADE -- Si se borra un usuario, se borran sus perros
