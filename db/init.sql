@@ -15,6 +15,7 @@ CREATE TABLE perro (
     id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(50) NOT NULL,
     raza VARCHAR(50) NOT NULL,
+    tipo BOOLEAN DEFAULT FALSE,
     genero BOOLEAN DEFAULT FALSE,
     fecha_de_nacimiento DATE,
     id_usuario INT UNSIGNED,
@@ -37,13 +38,13 @@ INSERT INTO usuario (id, rol, nombre, apellido, password, email, telefono) VALUE
 (3, 0, 'Ana', 'Gomez', 'ana123', 'ana@correo.com', '0982223344'),
 (4, 0, 'Carla', 'Ruiz', 'carla123', 'carla@correo.com', '0983334455');
 
--- Inserts de ejemplo para perros
-INSERT INTO perro (id, nombre, raza, genero, fecha_de_nacimiento, id_usuario) VALUES
-(1, 'Max', 'Labrador', 1, '2021-04-10', 2),
-(2, 'Luna', 'Golden Retriever', 0, '2022-01-05', 2),
-(3, 'Rocky', 'Bulldog', 1, '2020-07-14', 3),
-(4, 'Nala', 'Beagle', 0, '2023-03-20', 3),
-(5, 'Toby', 'Pastor Aleman', 1, '2019-11-30', 4);
+-- Inserts de ejemplo para perros //añadido tipo
+INSERT INTO perro (id, nombre, raza, tipo, genero, fecha_de_nacimiento, id_usuario) VALUES
+(1, 'Max', 'Labrador', 1,  1, '2021-04-10', 2),
+(2, 'Luna', 'Golden Retriever', 1,  0, '2022-01-05', 2),
+(3, 'Rocky', 'Bulldog', 1, 0, '2020-07-14', 3),
+(4, 'Nala', 'Beagle', 0, 1,  '2023-03-20', 3),
+(5, 'Toby', 'Pastor Aleman', 1, 0,  '2019-11-30', 4);
 
 -- Inserts de ejemplo para citas
 INSERT INTO cita (id, fecha, hora, id_perro) VALUES

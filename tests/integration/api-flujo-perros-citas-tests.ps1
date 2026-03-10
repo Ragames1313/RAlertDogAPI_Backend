@@ -73,10 +73,12 @@ if (-not $createdUserId) {
     exit 1
 }
 
+#Añadido tipo
 # 5) Crear perro asociado al usuario.
 $perroBody = @{
     nombre = 'RayoFlow'
     raza = 'Pastor'
+    tipo = 0
     genero = 1
     fecha_de_nacimiento = '2021-06-10'
     id_usuario = $createdUserId
@@ -90,6 +92,12 @@ Test-Api -Name 'POST /perros (crear)' -ExpectedStatusCodes @(200,201) -Action {
 if (-not $createdPerroId) {
     Write-Host "No se pudo crear perro de flujo. Abortando." -ForegroundColor Red
     exit 1
+}
+
+#Verificamos que el tipo sea correcto
+Test-Api -Name 'GET /perros/:id (verificar tipo)' -ExpectedStatusCodes @(200) -Action {
+    $p = Invoke-RestMethod -Uri "$baseUrl/perros/$createdPerroId" -Method Get
+    if ($p.tipo -ne 0) { throw 'Tipo del perro incorrecto' }
 }
 
 Test-Api -Name 'GET /perros/:id (recien creado)' -ExpectedStatusCodes @(200) -Action {
