@@ -94,6 +94,12 @@ if (-not $createdPerroId) {
     exit 1
 }
 
+#Verificamos que el tipo sea correcto
+Test-Api -Name 'GET /perros/:id (verificar tipo)' -ExpectedStatusCodes @(200) -Action {
+    $p = Invoke-RestMethod -Uri "$baseUrl/perros/$createdPerroId" -Method Get
+    if ($p.tipo -ne 0) { throw 'Tipo del perro incorrecto' }
+}
+
 Test-Api -Name 'GET /perros/:id (recien creado)' -ExpectedStatusCodes @(200) -Action {
     $p = Invoke-RestMethod -Uri "$baseUrl/perros/$createdPerroId" -Method Get
     if ([int]$p.id_usuario -ne $createdUserId) { throw 'Perro no pertenece al usuario esperado' }
